@@ -1,0 +1,12 @@
+from scapy.all import *
+
+# Define the target IP address
+target_ip = "www.example.com"
+
+# Create a SYN packet
+ip = IP(dst=target_ip)
+syn = TCP(dport=80, flags="S")
+pkt = ip / syn
+
+# Send the packet and wait for a response
+response = sr1(pkt, timeout=1)
